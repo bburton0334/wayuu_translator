@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import Papa from 'papaparse';
+import './App.css';
 
 const Translator = () => {
   const [englishWord, setEnglishWord] = useState('');
   const [wayuuWord, setWayuuWord] = useState('');
-  const [description, setDescription] = useState('');
+  const [partOfSpeechWords, setPartOfSpeechWords] = useState('');
+  const [englishSentence, setEnglishSentence] = useState('');
+  const [wayuuSentence, setWayuuSentence] = useState('');
+  const [detailsSentence, setDetailsSentence] = useState('');
 
   const search = (query) => {
     fetch('wayuu-english.csv')
@@ -17,11 +21,17 @@ const Translator = () => {
         if (match) {
           setEnglishWord(match.english);
           setWayuuWord(match.wayuu);
-          setDescription(match.description);
+          setPartOfSpeechWords(match.partofspeech);
+          setEnglishSentence(match.englishsentence);
+          setWayuuSentence(match.wayuusentence);
+          setDetailsSentence(match.details);
         } else {
           setEnglishWord('');
           setWayuuWord('');
-          setDescription('');
+          setPartOfSpeechWords('');
+          setEnglishSentence('');
+          setWayuuSentence('');
+          setDetailsSentence('');
         }
       });
   };
@@ -32,7 +42,7 @@ const Translator = () => {
 
   return (
     <div>
-      <label htmlFor="english-word-input">English Word:</label>
+      <label htmlFor="english-word-input" className='prompt-title'>English Word:</label>
       <input
         id="english-word-input"
         type="text"
@@ -41,9 +51,15 @@ const Translator = () => {
       />
       <button onClick={handleSearch}>Search</button>
       {wayuuWord && (
-        <div>
-          <p>Wayuunaiki Word: {wayuuWord}</p>
-          <p>Description: {description}</p>
+        <div className='info-area'>
+          <p className='translated-word'>{wayuuWord}</p>
+          <p><i>English word:</i> {englishWord}</p>
+          <p><i>Wayuunaiki word:</i> {wayuuWord}</p>
+          <br/>
+          <p>Part of Speech: {partOfSpeechWords}</p>
+          <p>English Sentence: {englishSentence}</p>
+          <p>Wayuunaiki Sentence: {wayuuSentence}</p>
+          <p>Extra Details: {detailsSentence}</p>
         </div>
       )}
     </div>
