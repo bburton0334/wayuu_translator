@@ -1,6 +1,9 @@
-english,wayuu,partofspeech,englishsentence,wayuusentence,details
-yes,aa,adv,n/a,n/a,n/a
-do, aa'inraa,vt,What are you doing?,¿Kasa paainjaka?,n/a
-sin,aainjala,nposs,"He was punished for the evil he did. (to be
-given wounds / corporal punishment (?)) ",Kalio?ushi saa?u naainjala,n/a
-except,aaja'a nee isaka,aff sfx,Except them,Nayaaja?a nee isaka naya,n/a
+english,wayuu,partofspeech,englishsentence,wayuusentence,details,compare
+yes,aa,adv,n/a,n/a,n/a,n/a
+do,aainjaa,vt,What are you doing?,¿Kasa paainjaka?,"""Acheküsü taainjüin.""  ""I have to do it."" ""Paainjain türa."" ""You made that."" ""tü miichi paainjakat"" ""this house which you are building""",cf: aa?inraa
+sin,aainjala,nposs,He was punished for the evil he did. (to be given wounds / corporal punishment (?)) ,Kalio?ushi saa?u naainjala,"""Müliashi ma?i taya saa?u tü taainjalakat (nütüma chi tashikai)."" ""(My father) punished me for my misdeed."" ""Nülatirüin jaainjala juulia."" ""He forgives you your sins. (causes your sins to pass away from you)""",cf: ama?üla | kaainjalaa
+except,aaja'a nee isaka,aff sfx,Except them,Nayaaja?a nee isaka naya,"""Niaaja?a nee isaka chia."" ""except him""", cf: isaa
+vocative,_aa,aff sf,Our sister,Wawalakalaa,This noun suffix forms the “vocative” by which the speaker directly addresses the hearer,n/a
+act,ama?üla | kaainjalaa,nposs,he keeps saying that the gods made by man are not god.,yootokuu müshi nia sünain nnojolin maleiwain tü maleiwa saainjalakat wayuu. ,product.,cf: aainjala
+sexual relations,aainjirawaa akuaippa ,vt,Do not have sexual relations with anyone other than your wife or that is not included in your (culture’s) behavior norms!,¡Nnojo jaainjiraain jukuaippa sümaa wayuu yalejeeru?u suulia tü juwayuusekat o?tta tü nnojotkat sulu?uin tü sukuaippapalakat atumaa jüpüleerua!,n/a,n/a
+rider,aajuchi,nposs,A man mounted / going on a mule,wayuu muulaajuchi,"""chi naajuchikai chi ama kasuutaikai ma?i"" ""the rider of (the one mounted on) the very white horse"" ""akaratshi shikii amaajunnuu"" ""seventy horsemen"""," [pl. aajuna , non-masc. aajutü] cf: aa?u"

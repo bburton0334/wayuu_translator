@@ -7,8 +7,9 @@ import './App.css';
 const App = () => {
   return (
     <div>
-      <h1 className='text'>English to Wayuunaiki Translator</h1>
-      <hr/>
+      <div className='title-holder'>
+        <h1 className='text'>English to Wayuunaiki Translator</h1>
+      </div>
 
       <div className='holder'>
         <Tabs className="tab-body">

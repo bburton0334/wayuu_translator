@@ -9,6 +9,7 @@ const Translator = () => {
   const [englishSentence, setEnglishSentence] = useState('');
   const [wayuuSentence, setWayuuSentence] = useState('');
   const [detailsSentence, setDetailsSentence] = useState('');
+  const [compareDetails, setCompareDetails] = useState('');
 
   const search = (query) => {
     fetch('wayuu-english.csv')
@@ -25,6 +26,7 @@ const Translator = () => {
           setEnglishSentence(match.englishsentence);
           setWayuuSentence(match.wayuusentence);
           setDetailsSentence(match.details);
+          setCompareDetails(match.compare);
         } else {
           setEnglishWord('');
           setWayuuWord('');
@@ -32,6 +34,7 @@ const Translator = () => {
           setEnglishSentence('');
           setWayuuSentence('');
           setDetailsSentence('');
+          setCompareDetails('');
         }
       });
   };
@@ -59,7 +62,8 @@ const Translator = () => {
           <p>Part of Speech: {partOfSpeechWords}</p>
           <p>English Sentence: {englishSentence}</p>
           <p>Wayuunaiki Sentence: {wayuuSentence}</p>
-          <p>Extra Details: {detailsSentence}</p>
+          <p>Extra Sentences, or Details: {detailsSentence}</p>
+          <p>Compare: {compareDetails}</p>
         </div>
       )}
     </div>
