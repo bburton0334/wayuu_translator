@@ -1,12 +1,14 @@
 body {
   height: 100vh;
   width: 100vw;
+  min-height: 100vh;
   background-color: rgb(245, 245, 245);
   font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .tab-body{
   margin: 30px;
+  min-height: 55vh;
 }
 
 
@@ -49,13 +51,14 @@ body {
 }
 
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  clear: both;
+  position: relative;
+  height: 30px;
+  margin-top: 0;
   color: #b1b1b1;
   text-align: center;
-  padding: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   background-color: #ffffff;
   box-shadow: 2px 2px 8px 2px rgba(0,0,0,.1);
 }
@@ -97,4 +100,14 @@ input {
   text-transform: uppercase;
   font-weight: 700;
   font-size: 25px;
+}
+
+.info-dup {
+  padding-top: 10px;
+  padding-bottom: 20px;
+  font-style: italic;
+}
+
+.results {
+  padding-top: 20px;
 }

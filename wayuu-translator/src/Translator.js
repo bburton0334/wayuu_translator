@@ -5,36 +5,27 @@ import './App.css';
 const Translator = () => {
   const [englishWord, setEnglishWord] = useState('');
   const [wayuuWord, setWayuuWord] = useState('');
-  const [partOfSpeechWords, setPartOfSpeechWords] = useState('');
-  const [englishSentence, setEnglishSentence] = useState('');
-  const [wayuuSentence, setWayuuSentence] = useState('');
-  const [detailsSentence, setDetailsSentence] = useState('');
-  const [compareDetails, setCompareDetails] = useState('');
+  const [partOfSpeech, setPartOfSpeech] = useState('');
+  const [englishDefinition, setEnglishDefinition] = useState('');
+  const [wayuuDefinition, setWayuuDefinition] = useState('');
+  const [searchedEnglishWord, setSearchedEnglishWord] = useState('');
+  const [matches, setMatches] = useState([]);
 
   const search = (query) => {
-    fetch('wayuu-english.csv')
+    fetch('english-wayuu-index.csv')
       .then((response) => response.text())
       .then((csv) => {
         const results = Papa.parse(csv, { header: true }).data;
-        const match = results.find(
-          (result) => result.english.toLowerCase() === query.toLowerCase()
+        const matchingResults = results.filter(
+          (result) => result.englishword.toLowerCase() === query.toLowerCase()
         );
-        if (match) {
-          setEnglishWord(match.english);
-          setWayuuWord(match.wayuu);
-          setPartOfSpeechWords(match.partofspeech);
-          setEnglishSentence(match.englishsentence);
-          setWayuuSentence(match.wayuusentence);
-          setDetailsSentence(match.details);
-          setCompareDetails(match.compare);
+
+        setSearchedEnglishWord(query);
+
+        if (matchingResults.length > 0) {
+          setMatches(matchingResults);
         } else {
-          setEnglishWord('');
-          setWayuuWord('');
-          setPartOfSpeechWords('');
-          setEnglishSentence('');
-          setWayuuSentence('');
-          setDetailsSentence('');
-          setCompareDetails('');
+          setMatches([]);
         }
       });
   };
@@ -45,29 +36,33 @@ const Translator = () => {
 
   return (
     <div>
-      <label htmlFor="english-word-input" className='prompt-title'>English Word:</label>
+      <label htmlFor="search-input" className='prompt-title'>English Word:</label>
       <input
-        id="english-word-input"
+        id="search-input"
         type="text"
         value={englishWord}
         onChange={(event) => setEnglishWord(event.target.value)}
       />
       <button onClick={handleSearch}>Search</button>
-      {wayuuWord && (
-        <div className='info-area'>
-          <p className='translated-word'>{wayuuWord}</p>
-          <p><i>English word:</i> {englishWord}</p>
-          <p><i>Wayuunaiki word:</i> {wayuuWord}</p>
-          <br/>
-          <p>Part of Speech: {partOfSpeechWords}</p>
-          <p>English Sentence: {englishSentence}</p>
-          <p>Wayuunaiki Sentence: {wayuuSentence}</p>
-          <p>Extra Sentences, or Details: {detailsSentence}</p>
-          <p>Compare: {compareDetails}</p>
-        </div>
-      )}
+      <div className='results'>
+        {matches.length > 1 && <p className='info-dup'> There are {matches.length} results for {searchedEnglishWord}.</p>}
+        {matches.map((match, index) => (
+          <div key={index}>
+            <h2>{match.englishword}</h2>
+            <p><strong>Wayuu word:</strong> {match.wayuuword}</p>
+            <p><strong>Part of speech:</strong> {match.partofspeech}</p>
+            <p><strong>English definition:</strong> {match.englishdefinition}</p>
+            <p><strong>Wayuu definition:</strong> {match.wayuudefinition}</p>
+          </div>
+        ))}
+        {matches.length === 0 && <p> No matches found.</p>}
+      </div>
     </div>
   );
 };
+
+
+
+
 
 export default Translator;
